@@ -29,5 +29,9 @@ jobs:
               uses: actions/setup-node@v3
               with:
                 node-version: 18
+            - name: Install dependencies
+              run: npm ci
+            - name: Install CDKTF CLI
+              run: npm install -g cdktf-cli
             - name: Generate bindings
               run: cdktf get
