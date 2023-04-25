@@ -1,0 +1,5 @@
+cdktf==0.15.5
+cdktf_cdktf_provider_datadog==5.0.3
+constructs==10.1.307
+pytest==7.3.0
+pipenv==2023.4.20
