@@ -21,3 +21,5 @@ jobs:
             - name: Install from Pipfile
               run: pipenv install
               shell: bash
+            - name: Generate bindings
+              run: cdktf get
