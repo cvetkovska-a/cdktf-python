@@ -10,7 +10,7 @@ class OutputStack(TerraformStack):
 
         # define resources here
 
-        TerraformOutput(self, "OutputStack",value="12")
+        TerraformOutput(self, "OutputStack",value=12)
 
 
 app = App()
