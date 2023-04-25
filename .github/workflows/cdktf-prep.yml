@@ -21,7 +21,5 @@ jobs:
             - name: Install from Pipfile
               run: pipenv install
               shell: bash
-            #- name: Generate bindings
-             # run: cdktf get
-            - name: pip freeze
-              run: pip3 freeze
+            - name: Generate bindings
+              run: cdktf get
