@@ -21,5 +21,13 @@ jobs:
             - name: Install from Pipfile
               run: pipenv install
               shell: bash
+            - name: Install terraform
+              uses: hashicorp/setup-terraform@v2
+              with:
+                terraform_version: 1.4.5
+            - name: Install nodejs
+              uses: actions/setup-node@v3
+              with:
+                node-version: 18
             - name: Generate bindings
               run: cdktf get
