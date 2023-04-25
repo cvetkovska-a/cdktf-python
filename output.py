@@ -15,6 +15,4 @@ class OutputStack(TerraformStack):
 
 app = App()
 OutputStack(app, "cdktf-python")
-print("output.py got executed")
-print(dict(os.environ))
 app.synth()
