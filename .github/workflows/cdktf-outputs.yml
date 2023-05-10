@@ -20,4 +20,4 @@ jobs:
               with:
                 github-token: ${{ github.token }} # Create a secret with a GitHub token that can comment on PRs
                 script: |
-                    echo $OUTPUT
+                    echo "$OUTPUT"
