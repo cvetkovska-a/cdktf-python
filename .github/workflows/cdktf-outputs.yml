@@ -1,5 +1,5 @@
 name: CDKTF OUTPUTS
-on: [pull_request]
+on: [push]
 jobs:
     preparations-job:
         runs-on: ubuntu-latest
