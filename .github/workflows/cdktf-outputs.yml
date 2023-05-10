@@ -15,9 +15,12 @@ jobs:
             #     echo "$EOF" >> "GITHUB_OUTPUT"
             - name: Generate multiline output
               id: string
+              env: 
+                time: $(curl https://time.mk)
               run: |
                 EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-                echo "time=$(curl https://time.mk)" >> "$GITHUB_ENV"          
+                echo "time<<$EOF" >> "$GITHUB_OUTPUT"   
+                echo "$EOF" >> "$GITHUB_OUTPUT"       
             - name: Comment the tf plan on the PR
               uses: actions/github-script@0.9.0
               id: hello
@@ -32,5 +35,5 @@ jobs:
             - name: Get the result
               run: |
                 echo "${{steps.hello.outputs.result}}"
-                echo "${{steps.string.outputs.env.time}}"
+                echo "${{steps.string.outputs.time}}"
 
