@@ -15,9 +15,9 @@ jobs:
             #     echo "$EOF" >> "GITHUB_OUTPUT"
             - name: Comment the tf plan on the PR
               uses: actions/github-script@0.9.0
-            #   env:
-            #     OUTPUT: "${{steps.string.outputs.STRING}}"
+              env:
+                OUTPUT: "hello world"
               with:
                 github-token: ${{ github.token }} # Create a secret with a GitHub token that can comment on PRs
                 script: |
-                    return "hello world"
+                    return "$OUTPUT"
