@@ -36,9 +36,9 @@ jobs:
             #   run: |
             #     echo "${{steps.hello.outputs.result}}"
             #     echo "${{steps.string.outputs.time}}"
-            - name: Set color
-              id: random-color-generator
-              run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
-            - name: Get color
-              run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
+            - name: Set multiline
+              id: multi
+              run: echo "CURL=curl https://time.mk" >> "$GITHUB_OUTPUT"
+            - name: Get curl
+              run: echo "The selected curl is ${{ steps.multi.outputs.CURL }}"
     
