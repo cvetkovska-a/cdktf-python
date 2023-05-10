@@ -7,20 +7,30 @@ jobs:
         steps:
             - name: Checkout the code to runner
               uses: actions/checkout@v3
+            # - name: Generate multiline output
+            #   id: string
+            #   run: |
+            #     EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+            #     echo "STRING=$(curl https://time.mk)<< $EOF" >> "GITHUB_OUTPUT"
+            #     echo "$EOF" >> "GITHUB_OUTPUT"
             - name: Generate multiline output
               id: string
               run: |
                 EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-                echo "STRING=$(curl https://time.mk)<< $EOF" >> "GITHUB_OUTPUT"
-                echo "$EOF" >> "GITHUB_OUTPUT"
+                echo "time=$(curl https://time.mk)" >> "$GITHUB_ENV"          
             - name: Comment the tf plan on the PR
               uses: actions/github-script@0.9.0
               id: hello
-              env:
-                OUTPUT: "${{steps.string.outputs.STRING}}"
+            #   env:
+            #     OUTPUT: "${{steps.string.outputs.time}}"
               with:
                 github-token: ${{ github.token }} # Create a secret with a GitHub token that can comment on PRs
-                script: |
-                    return process.env.OUTPUT
+                # script: |
+                #     return process.env.OUTPUT
+                script:
+                    return "hello world"
             - name: Get the result
-              run: echo "${{steps.hello.outputs.result}}"
+              run: |
+                echo "${{steps.hello.outputs.result}}"
+                echo "${{steps.string.outputs.env.time}}"
+
