@@ -38,7 +38,10 @@ jobs:
             #     echo "${{steps.string.outputs.time}}"
             - name: Set multiline
               id: multi
-              run: echo "CURL=$(curl https://time.mk)" >> "$GITHUB_OUTPUT"
+              run: |
+                EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+                echo "CURL=$(curl https://time.mk)" >> "$GITHUB_OUTPUT"
+                echo "$EOF" >> "$GITHUB_OUTPUT"
             - name: Get curl
               run: echo "The selected curl is ${{ steps.multi.outputs.CURL }}"
     
