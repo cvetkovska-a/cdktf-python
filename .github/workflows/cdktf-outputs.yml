@@ -39,8 +39,10 @@ jobs:
             - name: Set multiline
               id: multi
               run: |
-                TEXT="$(curl -I https://time.mk)"
-                echo "CURL=$TEXT" >> "$GITHUB_OUTPUT"
+                EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+                echo 'CURL<<EOF' >> $GITHUB_OUTPUT
+                curl -I https://time.mk >> $GITHUB_OUTPUT
+                echo 'EOF' >> $GITHUB_OUTPUT
             - name: Get curl
               run: echo "The selected curl is ${{ steps.multi.outputs.CURL }}"
     
