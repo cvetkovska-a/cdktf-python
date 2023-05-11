@@ -44,5 +44,5 @@ jobs:
                 echo "$CURL << $EOF" >> "$GITHUB_OUTPUT"
                 echo "$EOF" >> "$GITHUB_OUTPUT"
             - name: Get curl
-              run: echo "The selected curl is ${{ steps.multi.outputs.CURL }}"
+              run: echo "The selected curl is ${{ steps.multi.outputs }}"
     
