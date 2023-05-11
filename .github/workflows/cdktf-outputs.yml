@@ -40,7 +40,7 @@ jobs:
               id: multi
               run: |
                 EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-                CURL=$(curl -I https://time.mk)
+                CURL="uu demek ova kje raboti"
                 echo "$CURL << $EOF" >> "$GITHUB_OUTPUT"
                 echo "$EOF" >> "$GITHUB_OUTPUT"
             - name: Get curl
