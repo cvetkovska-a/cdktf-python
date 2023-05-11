@@ -39,8 +39,7 @@ jobs:
             - name: Set multiline
               id: multi
               run: |
-                CURL="uu demek ova kje raboti"
-                echo "$CURL" >> "$GITHUB_OUTPUT"
+                echo "CURL="uu demek ova kje raboti"" >> "$GITHUB_OUTPUT"
             - name: Get curl
               run: echo "The selected curl is ${{ steps.multi.outputs.CURL }}"
     
