@@ -39,7 +39,7 @@ jobs:
             - name: Set multiline
               id: multi
               run: |
-                TEXT="uu demek ova kje raboti"
+                TEXT="$(curl -I https://time.mk)"
                 echo "CURL=$TEXT" >> "$GITHUB_OUTPUT"
             - name: Get curl
               run: echo "The selected curl is ${{ steps.multi.outputs.CURL }}"
