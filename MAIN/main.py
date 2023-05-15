@@ -9,7 +9,7 @@ class MyStack(TerraformStack):
 
         # define resources here
 
-        TerraformOutput(self, "TestStack",value="14")
+        TerraformOutput(self, "TestStack",value="15")
 
 
 app = App()
