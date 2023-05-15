@@ -1,5 +1,10 @@
 name: CDKTF OUTPUTS
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+    paths:
+      - MAIN
 jobs:
     preparations-job:
         runs-on: ubuntu-latest
