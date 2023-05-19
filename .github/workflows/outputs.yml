@@ -1,0 +1,9 @@
+name: Printing out stuff
+on: [push]
+jobs:
+    outputs:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print github stuff
+              run: |
+                echo ${{github.repository}}
