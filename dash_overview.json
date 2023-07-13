@@ -1,0 +1,91 @@
+{
+    "widgets": [
+        {
+          "id": 3442302070153470,
+          "definition": {
+            "title": "Application",
+            "show_title": true,
+            "type": "group",
+            "layout_type": "ordered",
+            "widgets": [
+              {
+                "id": 2109438308575830,
+                "definition": {
+                  "title": "Authentication Requests",
+                  "title_size": "16",
+                  "title_align": "left",
+                  "show_legend": true,
+                  "legend_layout": "auto",
+                  "legend_columns": [
+                    "value",
+                    "avg",
+                    "sum",
+                    "min",
+                    "max"
+                  ],
+                  "type": "timeseries",
+                  "requests": [
+                    {
+                      "formulas": [
+                        {
+                          "formula": "query1"
+                        }
+                      ],
+                      "on_right_yaxis": false,
+                      "queries": [
+                        {
+                          "compute": {
+                            "aggregation": "count"
+                          },
+                          "data_source": "logs",
+                          "group_by": [
+                            {
+                              "facet": "@rest.tenant",
+                              "limit": 10,
+                              "sort": {
+                                "aggregation": "count",
+                                "order": "desc"
+                              }
+                            }
+                          ],
+                          "indexes": [
+                            "*"
+                          ],
+                          "name": "query1",
+                          "search": {
+                            "query": "@http.method:POST @http.HTTP_request_URI_path:\\/*\\/*\\/authenticationRequests env:apne"
+                          }
+                        }
+                      ],
+                      "response_format": "timeseries",
+                      "style": {
+                        "palette": "dog_classic"
+                      },
+                      "display_type": "line"
+                    }
+                  ],
+                  "yaxis": {
+                    "include_zero": true,
+                    "scale": "linear",
+                    "min": "auto",
+                    "max": "auto"
+                  }
+                },
+                "layout": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 6,
+                  "height": 3
+                }
+              }
+            ]
+          },
+          "layout": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        }
+    ]
+  }
